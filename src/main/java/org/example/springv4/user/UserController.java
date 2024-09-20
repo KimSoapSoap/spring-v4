@@ -49,6 +49,8 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody UserRequest.LoginDTO loginDTO, Errors errors) {
         String accessToken = userService.로그인(loginDTO);
+        // RequestParam으로 받는 것이 아니므로 @RequestBody를 넣어준다. @RequestBody를 넣어준다. JSON을 받아서 자바 객체로 변환
+
 
         // 원래 ok에 body를 넣어주면 되는데 header를 넣으려면 body와 함께 적어줘야 한다. 그냥 문법이다.
         // headerName을 "Authorization" 으로 하고 "Bearer " + accessToken 하면  엑세스토큰이다 라는 것을 명시
