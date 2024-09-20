@@ -15,7 +15,7 @@ public class JwtUtil {
                 .withClaim("id", user.getId()) // payload에 추가. 개인정보 넣지 않고 검증을 위한 id정도만(인조키 id번호)
                 .withClaim("username", user.getUsername())  // 참고로 .withClaim()으로 추가하면 payload에 내용 계속 추가.
                 .sign(Algorithm.HMAC512("metacoding")); //우리가 암호화 하고 우리가 복호화 해서 확인할 것이므로 대칭키 사용
-        return accessToken;
+        return accessToken;            //"metacoding"이 secret이다
     }
 
     //검증 코드
