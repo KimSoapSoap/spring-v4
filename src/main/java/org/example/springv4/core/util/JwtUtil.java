@@ -20,6 +20,8 @@ public class JwtUtil {
 
     //검증 코드
     public static User verify(String jwt){
+        //JWT 토큰을 검증할 때는 Bearer을 떼야 한다.
+        jwt = jwt.replace("Bearer ", "");
         DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC512("metacoding")).build().verify(jwt);
         int id = decodedJWT.getClaim("id").asInt();
         String username = decodedJWT.getClaim("username").asString();
