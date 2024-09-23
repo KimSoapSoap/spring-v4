@@ -18,6 +18,10 @@ public class BoardController {
     private final HttpSession session;
     private final BoardService boardService;
 
+    //list 리팩토링 할 때도 pagedTO를 ResponseEntity에 데이터를 넣어서 전달해주면 된다.
+    //나머지 Rest로 바꾸는 리팩토링을 해본다.
+    //응답은 DTO로 해준다.
+
     // localhost:8080?title=제목
     @GetMapping("/")
     public String list(
