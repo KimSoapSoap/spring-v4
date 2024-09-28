@@ -43,10 +43,13 @@ public class GlobalApiExceptionHandler {
     }
 
     // 서버에서 심각한 오류가 발생했을때 (모를 때)
+    // 내가 메시지에 e.getClass()를 붙여줬다.
+    // @RestControllerAdvice 에서   @ExceptionHandler 는 각종 Exception class를 잡아서 처리하므로 해당 클래스를 알면 여기 추가.
+    // 예를 들면 NoResourceFoundException 이런 거에 대한 처리.
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> ex(Exception e) {
         log.error(e.getMessage());
-        return new ResponseEntity<>(Resp.fail(500, "알 수 없는 에러입니다."), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(Resp.fail(500, "알 수 없는 에러입니다." +e.getClass()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
 
